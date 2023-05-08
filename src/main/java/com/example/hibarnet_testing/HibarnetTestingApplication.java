@@ -34,7 +34,7 @@ public class HibarnetTestingApplication {
 		user uu=optional.get();
 		System.out.println(uu);
 
-		List<user> op=userRepo.findByLastname("sharior");
+		List<user> op=userRepo.findByName("sharior");
 		
 
 		for (user usr:op) {
