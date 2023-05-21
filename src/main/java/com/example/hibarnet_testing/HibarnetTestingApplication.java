@@ -1,6 +1,6 @@
 package com.example.hibarnet_testing;
 
-import com.example.hibarnet_testing.domain.user;
+import com.example.hibarnet_testing.domain.User;
 import com.example.hibarnet_testing.repositories.UserRepo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,11 +16,11 @@ public class HibarnetTestingApplication {
 		ApplicationContext context =SpringApplication.run(HibarnetTestingApplication.class, args);
 		UserRepo userRepo=context.getBean(UserRepo.class);
 
-		user u=new user();
+		User u=new User();
 		u.setName("farhan");
 		u.setPhone("01749555777");
 		u.setPassword("123456");
-		user u1=new user();
+		User u1=new User();
 		u1.setName("sharior");
 		u1.setPhone("01749555777");
 		u1.setPassword("123456");
@@ -30,14 +30,14 @@ public class HibarnetTestingApplication {
 		System.out.println(userRepo.getClass());
 
 		userRepo.saveAll(List.of(u,u1));
-		Optional<user> optional=userRepo.findById(Long.valueOf(2));
-		user uu=optional.get();
+		Optional<User> optional=userRepo.findById(Long.valueOf(2));
+		User uu=optional.get();
 		System.out.println(uu);
 
-		List<user> op=userRepo.findByName("sharior");
+		List<User> op=userRepo.findByName("sharior");
 		
 
-		for (user usr:op) {
+		for (User usr:op) {
 			System.out.println(usr);
 		}
 		System.out.println(uu);

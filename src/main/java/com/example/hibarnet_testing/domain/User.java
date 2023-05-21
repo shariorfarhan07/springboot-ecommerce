@@ -2,7 +2,6 @@ package com.example.hibarnet_testing.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.GenerationTime;
 
 import java.util.Date;
 
@@ -13,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Table(name = "users")
-public class user {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -24,11 +23,9 @@ public class user {
     private String phone;
     @Column(name="password", nullable=false, length=50)
     private String password;
-
     @Temporal(TemporalType.TIMESTAMP)
     private Date created= new java.sql.Date(new java.util.Date().getTime());;
     private Date lastLogin;
-
 
 
 }
