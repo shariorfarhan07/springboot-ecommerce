@@ -16,13 +16,15 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "Categories")
-public class Category {
+@Table(name = "Category")
+public class Categories {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
     private String title;
+
+
     @ManyToMany
     private Set<Product> productList= new HashSet<>() ;
 

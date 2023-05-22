@@ -28,9 +28,7 @@ public class Product {
     private int stock;
     private String brand;
 
-//    @ManyToMany
-//    @JoinTable(name = "Product_category", joinColumns = @JoinColumn(name = "Product_id"),
-//            inverseJoinColumns = @JoinColumn(name = "category_id"))
-//    private Set<Category> category= new HashSet<>();
+    @ManyToMany
+    private Set<Categories> category= new HashSet<>();
 
 }
