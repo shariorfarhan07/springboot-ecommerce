@@ -33,7 +33,7 @@ public class HibarnetTestingApplication {
 
 		userRepo.save(u);
 		userRepo.save(u1);
-		Optional<User> optional=userRepo.findById(Long.valueOf(2));
+		Optional<User> optional=userRepo.findById(2);
 //		User uu=optional.get();
 //		System.out.println(uu);
 //

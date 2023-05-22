@@ -21,8 +21,8 @@ public class Address {
     private String address;
 
 
-
-
+    @ManyToOne
+    private  User user;
 
 
 }
