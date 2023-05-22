@@ -29,13 +29,14 @@ public class User {
     private Date created= new java.sql.Date(new java.util.Date().getTime());
     private Date lastLogin;
 
+
+
+
     @OneToMany(cascade = { CascadeType.ALL}, fetch = FetchType.LAZY)
-
-
-
-    @JoinColumn(name = "address")
+    @JoinColumn(name = "address_id")
     private List<Address> addresses=new LinkedList<>();
-    @OneToMany
+
+    @OneToMany(cascade = { CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name = "Order_id")
     private List<Order> order=new LinkedList<>();
 

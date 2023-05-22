@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -38,6 +40,12 @@ public class Order {
 
     @OneToOne
     private Address address;
+
+    @OneToMany(cascade = { CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private List<OrderDetails> orderDetails=new ArrayList<>();
+
+
 
 
 
