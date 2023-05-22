@@ -26,12 +26,17 @@ public class User {
     @Column(name="password", nullable=false, length=50)
     private String password;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date created= new java.sql.Date(new java.util.Date().getTime());;
+    private Date created= new java.sql.Date(new java.util.Date().getTime());
     private Date lastLogin;
 
     @OneToMany(cascade = { CascadeType.ALL}, fetch = FetchType.LAZY)
+
+
+
     @JoinColumn(name = "address")
     private List<Address> addresses=new LinkedList<>();
-
+    @OneToMany
+    @JoinColumn(name = "Order_id")
+    private List<Order> order=new LinkedList<>();
 
 }
