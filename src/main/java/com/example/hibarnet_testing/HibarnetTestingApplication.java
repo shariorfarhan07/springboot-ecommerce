@@ -1,12 +1,13 @@
 package com.example.hibarnet_testing;
 
+import com.example.hibarnet_testing.domain.Address;
 import com.example.hibarnet_testing.domain.User;
 import com.example.hibarnet_testing.repositories.UserRepo;
+import org.hibernate.mapping.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication
@@ -27,20 +28,22 @@ public class HibarnetTestingApplication {
 
 		System.out.println(u);
 		System.out.println(u1);
-		System.out.println(userRepo.getClass());
+		System.out.println(userRepo.getClass()+"farhan");
 
-		userRepo.saveAll(List.of(u,u1));
+
+		userRepo.save(u);
+		userRepo.save(u1);
 		Optional<User> optional=userRepo.findById(Long.valueOf(2));
-		User uu=optional.get();
-		System.out.println(uu);
-
-		List<User> op=userRepo.findByName("sharior");
-		
-
-		for (User usr:op) {
-			System.out.println(usr);
-		}
-		System.out.println(uu);
+//		User uu=optional.get();
+//		System.out.println(uu);
+//
+//		List<User> op=userRepo.findByName("sharior");
+//
+//
+//		for (User usr:op) {
+//			System.out.println(usr);
+//		}
+//		System.out.println(uu);
 
 
 

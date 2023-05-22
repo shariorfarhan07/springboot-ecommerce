@@ -20,7 +20,9 @@ public class Address {
     private String district;
     private String address;
 
-    @ManyToOne
-    private  User user;
+
+
+
+
 
 }

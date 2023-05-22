@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 
 @Entity
@@ -26,6 +28,10 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created= new java.sql.Date(new java.util.Date().getTime());;
     private Date lastLogin;
+
+    @OneToMany(cascade = { CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "address")
+    private List<Address> addresses=new LinkedList<>();
 
 
 }
