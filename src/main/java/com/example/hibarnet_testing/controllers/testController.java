@@ -1,12 +1,8 @@
 package com.example.hibarnet_testing.controllers;
 
-import aj.org.objectweb.asm.ConstantDynamic;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,9 +16,10 @@ public class testController {
     @GetMapping("/")
     public String cookie(HttpServletResponse response, HttpServletRequest request)
     {   Cookie cookies[] =request.getCookies();
+        String s="";
         for (Cookie cookie: cookies) {
-            System.out.println(cookie.getName()+","+cookie.getValue());
-            if (cookie.getName().equals("visited")) return "visited";
+            s+="{"+cookie.getName()+","+cookie.getValue()+"}\n";
+            if (cookie.getName().equals("visited")) return s;
         }
         jakarta.servlet.http.Cookie cookie1 =new Cookie("farhan","isThebest");
         jakarta.servlet.http.Cookie cookie2 =new Cookie("visited","1");
