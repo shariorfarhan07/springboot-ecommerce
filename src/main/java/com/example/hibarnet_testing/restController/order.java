@@ -1,2 +1,8 @@
-package com.example.hibarnet_testing.restController;public class order {
+package com.example.hibarnet_testing.restController;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class order {
+
 }
