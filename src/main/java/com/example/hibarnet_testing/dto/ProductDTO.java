@@ -4,9 +4,9 @@ import com.example.hibarnet_testing.domain.Categories;
 
 import java.util.Set;
 
-public record Product(Long id,
-                      String name,
-                      double price,
-                      int stock,
-                      Set<Categories> category) {
+public record ProductDTO(Long id,
+                         String name,
+                         double price,
+                         int stock,
+                         Set<Categories> category) {
 }

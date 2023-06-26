@@ -1,7 +1,9 @@
 package com.example.hibarnet_testing;
 
 import com.example.hibarnet_testing.domain.Address;
+import com.example.hibarnet_testing.domain.Product;
 import com.example.hibarnet_testing.domain.User;
+import com.example.hibarnet_testing.repositories.ProductRepo;
 import com.example.hibarnet_testing.repositories.UserRepo;
 import org.hibernate.mapping.List;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +18,7 @@ public class HibarnetTestingApplication {
 	public static void main(String[] args) {
 		ApplicationContext context =SpringApplication.run(HibarnetTestingApplication.class, args);
 		UserRepo userRepo=context.getBean(UserRepo.class);
+		ProductRepo productRepo=context.getBean(ProductRepo.class);
 
 		User u=new User();
 		u.setName("farhan");
@@ -26,6 +29,11 @@ public class HibarnetTestingApplication {
 		u1.setPhone("01749555777");
 		u1.setPassword("123456");
 
+		Product p=new Product();
+		p.setId(1L);
+		p.setName("This is a product");
+
+
 		System.out.println(u);
 		System.out.println(u1);
 		System.out.println(userRepo.getClass()+"farhan");
@@ -34,16 +42,7 @@ public class HibarnetTestingApplication {
 		userRepo.save(u);
 		userRepo.save(u1);
 		Optional<User> optional=userRepo.findById(2);
-//		User uu=optional.get();
-//		System.out.println(uu);
-//
-//		List<User> op=userRepo.findByName("sharior");
-//
-//
-//		for (User usr:op) {
-//			System.out.println(usr);
-//		}
-//		System.out.println(uu);
+
 
 
 

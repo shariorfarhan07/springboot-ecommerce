@@ -1,24 +1,30 @@
 package com.example.hibarnet_testing.restController;
 
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/curt")
 public class curt {
 
     @GetMapping("/{id}/{qty}")
-    public String addtocurt(){
+    public String addtocurt(@PathVariable("id") Long id ){
         return "";
     }
     @DeleteMapping("/{id}")
-    public String removeFromCart(){
-        return "";
+    public String removeFromCart(@PathVariable("id") Long id){
+        return "id"+id;
     }
 
+    @PostMapping("test")
+    public String test(@RequestBody Test test){
+        System.out.println(test);
+        return " ";
+    }
+
+    public  String test(){
+        return "test";
+    }
 
 }
 
