@@ -35,7 +35,7 @@ monolithic ecommerce application maintaining all the standards.
 
 
 <details>
- <summary><code>GET</code> <code><b>/product/{id}</b></code> <code>(gets all the product in json response)</code></summary>
+ <summary><code>GET</code> <code><b>/product/{id}</b></code> <code>(gets a single product and its detail in json response)</code></summary>
 
 ##### Parameters
 
@@ -59,7 +59,7 @@ monolithic ecommerce application maintaining all the standards.
 
 
 <details>
- <summary><code>POST</code> <code><b>/product</b></code> <code>(gets all the product in json response)</code></summary>
+ <summary><code>POST</code> <code><b>/product</b></code> <code>(Creates Product)</code></summary>
 
 ##### Parameters
 
@@ -118,7 +118,7 @@ monolithic ecommerce application maintaining all the standards.
 
 
 <details>
-  <summary><code>DELETE</code> <code><b>/product/{id}</b></code> <code>(deletes all in-memory stub & proxy configs)</code></summary>
+  <summary><code>DELETE</code> <code><b>/product/{id}</b></code> <code>(deletes products with the given id)</code></summary>
 
 ##### Parameters
 
