@@ -1,6 +1,7 @@
 package com.example.hibarnet_testing.restController;
 
 
+import com.example.hibarnet_testing.dto.Test;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,7 +20,7 @@ public class curt {
     @PostMapping("test")
     public String test(@RequestBody Test test){
         System.out.println(test);
-        return " ";
+        return "{'message':'success'}";
     }
 
     public  String test(){

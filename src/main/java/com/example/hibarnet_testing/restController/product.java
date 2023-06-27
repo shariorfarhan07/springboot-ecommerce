@@ -18,7 +18,7 @@ public class product {
         return product;
     }
 
-    @PutMapping("/product")
+    @PutMapping("/product/{id}")
     public String productUpdate(){return "status ok";}
 
     @DeleteMapping("/product")
