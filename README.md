@@ -149,11 +149,11 @@ monolithic ecommerce application maintaining all the standards.
 - [ ] user read
 
 ## product controller 
-- [ ] product create
+- [x] product create
 - [ ] product view(single product)
-- [ ] product delete 
-- [ ] product update 
-- [ ] product view with pagination
+- [x] product delete 
+- [x] product update 
+- [x] product view with pagination
 
 ## cart
 - [ ] add to cart
