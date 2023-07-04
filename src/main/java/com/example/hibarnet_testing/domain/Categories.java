@@ -19,13 +19,21 @@ import java.util.Set;
 @Table(name = "Category")
 public class Categories {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    @Column(unique = true)
     private String title;
 
 
     @ManyToMany
+    @JoinTable(
+            name = "category_connection",
+            joinColumns = @JoinColumn(name = "Category_id"),
+            inverseJoinColumns = @JoinColumn(name = "Product_id"))
+
     private Set<Product> productList= new HashSet<>() ;
+
+
 
 }

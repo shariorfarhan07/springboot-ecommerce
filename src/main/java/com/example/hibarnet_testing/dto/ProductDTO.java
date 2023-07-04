@@ -8,5 +8,7 @@ public record ProductDTO(Long id,
                          String name,
                          double price,
                          int stock,
+                         String brand,
                          Set<Categories> category) {
+
 }

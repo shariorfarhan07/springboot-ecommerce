@@ -25,7 +25,7 @@ public class Product {
     private int stock;
     private String brand;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Categories> category= new HashSet<>();
 
 }

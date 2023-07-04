@@ -3,31 +3,42 @@ package com.example.hibarnet_testing.restController;
 
 import com.example.hibarnet_testing.domain.Product;
 import com.example.hibarnet_testing.dto.ProductDTO;
-import com.example.hibarnet_testing.repositories.ProductRepo;
+import com.example.hibarnet_testing.service.productService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class product {
     @Autowired
-    ProductRepo productDb;
+    productService productSr;
     @PostMapping("/product")
-    public ProductDTO productCreate(@RequestBody ProductDTO product){
-
-
+    public Product productCreate(@RequestBody ProductDTO payload){
+        Product product = null;
+        try {
+            product = productSr.productCreate(payload);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return product;
     }
 
     @PutMapping("/product/{id}")
-    public String productUpdate(){return "status ok";}
+    public Product productUpdate(@RequestBody ProductDTO payload){
+        Product product = null;
+        try {
+            product = productSr.productUpdate(payload);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return product;
+    }
 
     @DeleteMapping("/product")
     public String productDelete(){return "status ok";}
 
     @GetMapping("/product")
-    public com.example.hibarnet_testing.domain.Product productView(){
-        Product p=productDb.getReferenceById(1L);
-        return p;
+    public String productView(){
+     return  "this is a string";
     }
 
 
