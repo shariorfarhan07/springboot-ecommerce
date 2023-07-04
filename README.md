@@ -63,9 +63,9 @@ monolithic ecommerce application maintaining all the standards.
 
 ##### Parameters
 
-> | name      |  type     | data type               | description                                                           |
+> | name      |  type     | data type              | description                                                           |
 > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | None      |  required | object (JSON or YAML)   | N/A  |
+> | None      |  required | object (JSON)   | N/A  |
 
 
 ##### Responses
@@ -93,7 +93,7 @@ monolithic ecommerce application maintaining all the standards.
 
 > | name      |  type     | data type               | description                                                           |
 > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | None      |  required | object (JSON or YAML)   | N/A  |
+> | None      |  required | object (JSON )   | N/A  |
 
 
 ##### Responses
