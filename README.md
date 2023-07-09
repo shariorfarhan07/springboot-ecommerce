@@ -153,7 +153,7 @@ monolithic ecommerce application maintaining all the standards.
 - [ ] product view(single product)
 - [x] product delete 
 - [x] product update 
-- [x] product view with pagination
+- [ ] product view with pagination
 
 ## cart
 - [ ] add to cart
