@@ -21,13 +21,13 @@ monolithic ecommerce application maintaining all the standards.
 
 ##### Responses
 
-> | http code     | content-type                      | response    |
-> |---------------|-------------|---------------------------------------------------------------------|
-> | `200`         | `text/plain;charset=UTF-8`        | JSON object |
+| http code     | content-type                      | response    |
+|---------------|-------------|---------------------------------------------------------------------|
+ | `200`         | `text/plain;charset=UTF-8`        | JSON object |
 
 ##### Example cURL
 
-> ```javascript
+> ```bash
 >  curl -X GET -H "Content-Type: application/json" http://localhost:8080/
 > ```
 
@@ -39,18 +39,18 @@ monolithic ecommerce application maintaining all the standards.
 
 ##### Parameters
 
-> | name |  type     | data type               | description     |
->|------|-----------|-----------|--------------------|
-> | id    |  required | JSON object  | N/A  |
+| name | type     | data type   | description |
+|------|----------|-------------|-------------|
+| id   | required | JSON object | N/A         |
 ##### Responses
 
-> | http code     | content-type                      | response    |
-> |---------------|-------------|---------------------------------------------------------------------|
-> | `200`         | `text/plain;charset=UTF-8`        | JSON object |
+| http code     | content-type                      | response                          |
+|---------------|-----------------------------------|-----------------------------------|
+| `200`         | `text/plain;charset=UTF-8`        | JSON object                       |
 
 ##### Example cURL
 
-> ```javascript
+> ```bash
 >  curl -X GET -H "Content-Type: application/json" http://localhost:8080/
 > ```
 
@@ -63,22 +63,22 @@ monolithic ecommerce application maintaining all the standards.
 
 ##### Parameters
 
-> | name      |  type     | data type              | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | None      |  required | object (JSON)   | N/A  |
+| name      |  type     | data type              | description                                                           |
+|-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+| None      |  required | object (JSON)   | N/A  |
 
 
 ##### Responses
 
-> | http code     | content-type                      | response                                                            |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `201`         | `text/plain;charset=UTF-8`        | `Configuration created successfully`                                |
-> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
-> | `405`         | `text/html;charset=utf-8`         | None                                                                |
+| http code     | content-type                      | response                                                            |
+|---------------|-----------------------------------|---------------------------------------------------------------------|
+ | `201`         | `text/plain;charset=UTF-8`        | `Configuration created successfully`                                |
+ | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
+ | `405`         | `text/html;charset=utf-8`         | None                                                                |
 
 ##### Example cURL
 
-> ```javascript
+> ```bash
 >  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:8080/
 > ```
 
@@ -91,24 +91,24 @@ monolithic ecommerce application maintaining all the standards.
 
 ##### Parameters
 
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | None      |  required | object (JSON )   | N/A  |
+| name      |  type     | data type               | description |
+|-----------|-----------|------|-----------------------------------------------------------------------|
+| None      |  required | object (JSON )   | N/A  |
 
 
 ##### Responses
 
-> | http code     | content-type                      | response                                                            |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `201`         | `text/plain;charset=UTF-8`        | `Configuration created successfully`                                |
-> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
-> | `405`         | `text/html;charset=utf-8`         | None                                                                |
+| http code     | content-type                      | response                                                            |
+|---------------|-----------------------------------|---------------------------------------------------------------------|
+| `201`         | `text/plain;charset=UTF-8`        | `Configuration created successfully`                                |
+| `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
+| `405`         | `text/html;charset=utf-8`         | None                                                                |
 
 ##### Example cURL
 
-> ```javascript
->  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:8080/
-> ```
+ ```bash
+  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:8080/
+ ```
 
 </details>
 
@@ -122,20 +122,20 @@ monolithic ecommerce application maintaining all the standards.
 
 ##### Parameters
 
-> | name              |  type     | data type      | description            |
-> |-------------------|-----------|------------------------|-------------------------------------|
-> | `id` |  required | int ($int64)   | The specific product id |
+| name              |  type     | data type      | description            |
+|-------------------|-----------|------------------------|-------------------------------------|
+| `id` |  required | int ($int64)   | The specific product id |
 
 
 ##### Responses
 
-> | http code     | content-type                      | response                                                      |
-> |---------------|---------------------------------------------------------------|---------------------------------------------------------------------|
-> | `200`         | `text/plain;charset=UTF-8`        | `product <name> was deleted succesfully deleted successfully` |
+| http code     | content-type                      | response                                                      |
+|---------------|---------------------------------------------------------------|---------------------------------------------------------------------|
+| `200`         | `text/plain;charset=UTF-8`        | `product <name> was deleted succesfully deleted successfully` |
 
 ##### Example cURL
 
-> ```javascript
+> ```bash
 >  curl -X DELETE -H "Content-Type: application/json" http://localhost:8889/
 > ```
 
