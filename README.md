@@ -197,7 +197,7 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 
 
 <details>
- <summary><code>POST</code> <code><b>/user</b></code> <code>(Creates Product)</code></summary>
+ <summary><code>POST</code> <code><b>/user</b></code> <code>(Creates user)</code></summary>
 
 ##### Parameters
 
@@ -225,7 +225,7 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 
 
 <details>
- <summary><code>PUT</code> <code><b>/user/{id}</b></code> <code>(Updates the product of given id )</code></summary>
+ <summary><code>PUT</code> <code><b>/user/{id}</b></code> <code>(Updates the user of given id )</code></summary>
 
 ##### Parameters
 
@@ -256,7 +256,7 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 
 
 <details>
-  <summary><code>DELETE</code> <code><b>/user/{id}</b></code> <code>(deletes products with the given id)</code></summary>
+  <summary><code>DELETE</code> <code><b>/user/{id}</b></code> <code>(deletes user with the given id)</code></summary>
 
 ##### Parameters
 
