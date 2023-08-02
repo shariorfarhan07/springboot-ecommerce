@@ -22,6 +22,11 @@ public class product {
         return product;
     }
 
+
+
+
+
+
     @PutMapping("/product/{id}")
     public Product productUpdate(@RequestBody ProductDTO payload){
         Product product = null;
@@ -38,7 +43,7 @@ public class product {
 
     @GetMapping("/product")
     public String productView(){
-     return  "this is a string";
+
     }
 
 
