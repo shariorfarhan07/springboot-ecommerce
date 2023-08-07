@@ -4,6 +4,7 @@ package com.example.hibarnet_testing.restController;
 import com.example.hibarnet_testing.domain.Product;
 import com.example.hibarnet_testing.dto.ProductDTO;
 import com.example.hibarnet_testing.service.productService;
+import jakarta.annotation.Nullable;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class product {
 
     @PostMapping()
     public Product productCreate(@RequestBody ProductDTO payload){
+
         Product product = null;
         try {
             product = productSr.productCreate(payload);

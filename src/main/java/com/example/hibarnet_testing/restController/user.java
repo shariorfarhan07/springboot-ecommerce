@@ -14,7 +14,7 @@ public class user {
 
     /* returns single the user*/
     @GetMapping("/{id}")
-    public String getSingleUser(){
+    public String getSingleUser(@PathVariable String id){
         return "status ok";
     }
 
@@ -33,7 +33,7 @@ public class user {
 
     /* delete specific user*/
     @DeleteMapping("/{id}")
-    public String deleteUser(){
+    public String deleteUser(@PathVariable String id){
         return "status ok";
     }
 
