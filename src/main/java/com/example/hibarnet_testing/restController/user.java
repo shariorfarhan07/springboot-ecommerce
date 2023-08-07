@@ -4,38 +4,35 @@ package com.example.hibarnet_testing.restController;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/user")
 public class user {
     /* returns all the user*/
-    @GetMapping("/user")
+    @GetMapping()
     public String User(){
         return "status ok";
     }
 
     /* returns single the user*/
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public String getSingleUser(){
         return "status ok";
     }
 
     /* returns all the user*/
-    @PostMapping("/user")
+    @PostMapping()
     public String createUser(){
         return "status ok";
     }
 
-
     /* updates specific user  */
-    @PutMapping("/user")
+    @PutMapping()
     public String updateUser(){
 
         return "status ok";
     }
 
-
-
-    
     /* delete specific user*/
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public String deleteUser(){
         return "status ok";
     }

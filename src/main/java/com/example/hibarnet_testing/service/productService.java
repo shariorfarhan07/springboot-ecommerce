@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class productService {
-    @Autowired
-    ProductRepo productDb;
+    private ProductRepo productDb;
+    public  ProductRepo productRepo(){
+        return this.productDb;
+    }
 
     public Product productCreate(ProductDTO item) {
         Product product=new Product();
