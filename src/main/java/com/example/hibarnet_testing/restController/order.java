@@ -1,17 +1,19 @@
 package com.example.hibarnet_testing.restController;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/order")
 public class order {
-    @PostMapping("/order")
-    public String creatOrder(){ return "";}
-    @PutMapping("/order")
+
+    @GetMapping()
+    public String creatOrder(){
+        System.out.println("this is farhan");
+        return "this is farhan";}
+    @PutMapping()
     public String updateOrder(){ return "";}
 
-    @PutMapping("/order/{id}")
+    @PutMapping("/{id}")
     public String stateChangeOrder(){ return "";}
 
 

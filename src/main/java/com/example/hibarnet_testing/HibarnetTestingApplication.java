@@ -5,7 +5,9 @@ import com.example.hibarnet_testing.domain.Product;
 import com.example.hibarnet_testing.domain.User;
 import com.example.hibarnet_testing.repositories.ProductRepo;
 import com.example.hibarnet_testing.repositories.UserRepo;
-import org.hibernate.mapping.List;
+import org.hibernate.cfg.Environment;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,8 +16,9 @@ import java.util.Optional;
 
 @SpringBootApplication
 public class HibarnetTestingApplication {
-
-	public static void main(String[] args) {
+	@Value("${how}")
+	static String name;
+		public static void main(String[] args) {
 		ApplicationContext context =SpringApplication.run(HibarnetTestingApplication.class, args);
 		UserRepo userRepo=context.getBean(UserRepo.class);
 		ProductRepo productRepo=context.getBean(ProductRepo.class);
@@ -44,17 +47,7 @@ public class HibarnetTestingApplication {
 		Optional<User> optional=userRepo.findById(2);
 
 
-
-
-
-
-
-
-
-
-
-
-
+		
 	}
 
 }
