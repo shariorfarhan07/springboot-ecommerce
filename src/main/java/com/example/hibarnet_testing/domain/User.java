@@ -19,11 +19,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name="name", nullable=false, length=100)
+    @Column(name="Name", nullable=false, length=100)
     private String name;
-    @Column(name="phone", nullable=true, length=14)
+    @Column(name="Phone", nullable=true, length=14)
     private String phone;
-    @Column(name="password", nullable=false, length=50)
+    @Column(name="Password", nullable=false, length=50)
     private String password;
     @Temporal(TemporalType.TIMESTAMP)
     private Date created= new java.sql.Date(new java.util.Date().getTime());
