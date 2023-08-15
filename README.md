@@ -290,10 +290,10 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 
 ## product controller 
 - [x] product create
-- [ ] product view(single product)
+- [x] product view(single product)
 - [x] product delete 
 - [x] product update 
-- [ ] product view with pagination
+- [x] product view with pagination
 
 ## cart
 - [ ] add to cart

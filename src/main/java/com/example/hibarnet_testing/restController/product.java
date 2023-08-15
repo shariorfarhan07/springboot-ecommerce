@@ -4,8 +4,10 @@ package com.example.hibarnet_testing.restController;
 import com.example.hibarnet_testing.domain.Product;
 import com.example.hibarnet_testing.dto.ProductDTO;
 import com.example.hibarnet_testing.service.productService;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/product")
@@ -45,13 +47,28 @@ public class product {
 
     @GetMapping("/all")
     public List<Product> productView(){
-        List<Product> product=productSr.getAllProduct();
-
-
-
-
-        return product;
+        return productSr.getAllProduct();
     }
+
+
+    @GetMapping
+    public Page<Product> findProduct(
+            @RequestParam(value = "pageNumber",defaultValue = "0") int pageNumber,
+            @RequestParam(value = "quantity",defaultValue = "10") int quantity,
+            @RequestParam(value = "order",defaultValue = "asc")String order,
+            @RequestParam(value = "field",defaultValue = "id") String field
+    )
+    {
+        System.out.println(pageNumber+"  "+quantity+"  "+order+"  "+field);
+       return productSr.findProductsWithPaginationSortedWithField(pageNumber,quantity,field,order);
+
+           }
+    @GetMapping("{id}")
+    public Optional<Product> getProductWithId(@PathVariable("id") long id){
+        return productSr.findProductWithId(id);
+    }
+
+
 
 
 

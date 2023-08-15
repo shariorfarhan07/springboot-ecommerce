@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class productService {
@@ -43,23 +44,28 @@ public class productService {
         return productDb.findAll();
     }
 
-    public List<Product> firndProductsWithSorting(String field){
 
-        return productRepo().findAll(Sort.by(Sort.Direction.ASC,field));
+
+//   all the things you can do with pagination's
+    public List<Product> findProductsWithSorting(String field){
+
+        return productDb.findAll(Sort.by(Sort.Direction.ASC,field));
     }
-
 
     public Page<Product> findProductsWithPagination(int offset, int pageSize){
-        return  productRepo().findAll(PageRequest.of(offset,pageSize));
+        return  productDb.findAll(PageRequest.of(offset,pageSize));
+    }
+
+    public  Page<Product> findProductsWithPaginationSortedWithField (int offset, int pageSize, String field, String order){
+        if (order.equals("dec")) {
+            return productDb.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC, field)));
+        }
+
+        return productDb.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.ASC, field)));
     }
 
 
-    public Page<Product> findProductsWithPaginationSortedWithField (int offset, int pageSize,String field,String order){
-        if (order.equals("dec")) return  productRepo().findAll(PageRequest.of(offset,pageSize,Sort.by(Sort.Direction.DESC,field)));
-
-        return  productRepo().findAll(PageRequest.of(offset,pageSize,Sort.by(Sort.Direction.ASC,field)));
+    public Optional<Product> findProductWithId(long id) {
+        return productDb.findById(id);
     }
-
-
-
 }
