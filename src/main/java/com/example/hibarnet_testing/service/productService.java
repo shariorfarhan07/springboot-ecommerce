@@ -68,4 +68,11 @@ public class productService {
     public Optional<Product> findProductWithId(long id) {
         return productDb.findById(id);
     }
+
+    public String deleteProduct(long id) {
+        Optional<Product> p=findProductWithId(id);
+        if (p==null) return "there is no product with id: " + id ;
+        p.ifPresent(productDb::delete);
+    return "done" ;
+    }
 }

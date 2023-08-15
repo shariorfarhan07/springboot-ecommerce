@@ -42,8 +42,8 @@ public class product {
         return product;
     }
 
-    @DeleteMapping()
-    public String productDelete(){return "status ok";}
+    @DeleteMapping("/{id}")
+    public String productDelete(@PathVariable("id") long id){return productSr.deleteProduct(id);}
 
     @GetMapping("/all")
     public List<Product> productView(){
