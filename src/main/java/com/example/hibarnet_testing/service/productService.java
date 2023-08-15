@@ -4,11 +4,21 @@ import com.example.hibarnet_testing.domain.Product;
 import com.example.hibarnet_testing.dto.ProductDTO;
 import com.example.hibarnet_testing.mapper.ProductMapper;
 import com.example.hibarnet_testing.repositories.ProductRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class productService {
-    private ProductRepo productDb;
+    private final ProductRepo productDb;
+
+    public productService(ProductRepo productDb) {
+        this.productDb = productDb;
+    }
+
     public  ProductRepo productRepo(){
         return this.productDb;
     }
@@ -28,4 +38,28 @@ public class productService {
         System.out.println("product updated : "+product);
         return product;
             }
+
+    public List<Product> getAllProduct() {
+        return productDb.findAll();
+    }
+
+    public List<Product> firndProductsWithSorting(String field){
+
+        return productRepo().findAll(Sort.by(Sort.Direction.ASC,field));
+    }
+
+
+    public Page<Product> findProductsWithPagination(int offset, int pageSize){
+        return  productRepo().findAll(PageRequest.of(offset,pageSize));
+    }
+
+
+    public Page<Product> findProductsWithPaginationSortedWithField (int offset, int pageSize,String field,String order){
+        if (order.equals("dec")) return  productRepo().findAll(PageRequest.of(offset,pageSize,Sort.by(Sort.Direction.DESC,field)));
+
+        return  productRepo().findAll(PageRequest.of(offset,pageSize,Sort.by(Sort.Direction.ASC,field)));
+    }
+
+
+
 }

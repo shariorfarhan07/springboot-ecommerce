@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +13,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,4 +26,9 @@ public class Product {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Categories> category= new HashSet<>();
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ")";
+    }
 }

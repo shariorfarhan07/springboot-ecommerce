@@ -4,7 +4,6 @@ package com.example.hibarnet_testing.restController;
 import com.example.hibarnet_testing.domain.Product;
 import com.example.hibarnet_testing.dto.ProductDTO;
 import com.example.hibarnet_testing.service.productService;
-import jakarta.annotation.Nullable;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -44,16 +43,14 @@ public class product {
     @DeleteMapping()
     public String productDelete(){return "status ok";}
 
-    @GetMapping("/")
-    public List<product> productView(){
-//        int pageSize=5;
-//        int pageNumber=1;
-//        Pageable p= (Pageable) PageRequest.of(pageNumber,pageSize);
-//        Page<product>  pageProduct=this.productSr.productRepo().findAll(p);
+    @GetMapping("/all")
+    public List<Product> productView(){
+        List<Product> product=productSr.getAllProduct();
 
 
 
-        return null;
+
+        return product;
     }
 
 

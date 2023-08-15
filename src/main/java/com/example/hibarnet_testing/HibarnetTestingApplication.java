@@ -40,9 +40,14 @@ public class HibarnetTestingApplication {
 		u3.setPhone("01749555777");
 		u3.setPassword("123456");
 
-		Product p=new Product();
-		p.setId(1L);
-		p.setName("This is a product");
+			for (int i = 0; i < 50; i++) {
+				Product p=new Product();
+				p.setName("This is a product "+i);
+				productRepo.save(p);
+			}
+
+
+
 
 
 		System.out.println(u);
