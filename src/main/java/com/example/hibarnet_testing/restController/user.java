@@ -26,7 +26,7 @@ public class user {
 
     /* updates specific user  */
     @PutMapping()
-    public String updateUser(){
+    public String updateUser(@RequestBody user user){
 
         return "status ok";
     }
