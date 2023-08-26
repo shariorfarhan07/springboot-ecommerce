@@ -283,10 +283,11 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 
 
 ## user controller 
-- [ ] user create 
-- [ ] user update 
-- [ ] user delete
-- [ ] user read
+- [x] user create 
+- [x] user update 
+- [x] user delete
+- [x] user read
+- [ ] Logger Implementation
 
 ## product controller 
 - [x] product create
@@ -294,13 +295,16 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 - [x] product delete 
 - [x] product update 
 - [x] product view with pagination
+- [ ] Logger Implementation
 
 ## cart
 - [ ] add to cart
 - [ ] remove from cart
 - [ ] view cart
+- [ ] Logger Implementation
 ## Order  
 - [ ] see order 
 - [ ] place order
 - [ ] update order
 - [ ] update status
+- [ ] Logger Implementation
