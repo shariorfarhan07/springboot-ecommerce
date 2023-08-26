@@ -2,7 +2,9 @@ package com.example.hibarnet_testing.restController;
 
 
 import com.example.hibarnet_testing.domain.User;
+import com.example.hibarnet_testing.dto.userDTO;
 import com.example.hibarnet_testing.service.UserService;
+import org.apache.coyote.Response;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,25 +31,27 @@ public class user {
 
     /* returns all the user*/
     @PostMapping()
-    public String createUser(@RequestBody com.example.hibarnet_testing.dto.user user)
-    {
-        userService.createUser(user);
-        return "status ok";
+    public User createUser(@RequestBody userDTO user)
+    {   User userCreated=userService.createUser(user);
+        return userCreated;
 
     }
 
     /* updates specific user  */
     @PutMapping()
-    public String updateUser(@RequestBody user user){
-        userService.userUpdate(user);
-        return "status ok";
+    public User updateUser(@RequestBody User user){
+        return userService.userUpdate(user);
     }
 
     /* delete specific user*/
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable long id){
-        userService.deleteUser(id);
-        return "status ok";
+    public Boolean deleteUser(@PathVariable long id){
+       try {
+           userService.deleteUser(id);
+       }catch (Exception e){
+           return  false;
+       }
+        return true;
     }
 
 

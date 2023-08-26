@@ -1,7 +1,7 @@
 package com.example.hibarnet_testing.service;
 
 import com.example.hibarnet_testing.domain.User;
-import com.example.hibarnet_testing.dto.user;
+import com.example.hibarnet_testing.dto.userDTO;
 import com.example.hibarnet_testing.mapper.UserMapper;
 import com.example.hibarnet_testing.repositories.UserRepo;
 import org.springframework.stereotype.Service;
@@ -21,8 +21,9 @@ public class UserService {
         return userRepo.findById(id);
     }
 
-    public void createUser(user user) {
+    public User createUser(userDTO user) {
         User u= UserMapper.userToEntity(user);
+        return u;
     }
 
     public void deleteUser(long id) {
@@ -30,6 +31,8 @@ public class UserService {
         userRepo.delete(u);
     }
 
-    public void userUpdate(User user) {
+    public User userUpdate(User user) {
+        User u= (User) userRepo.findById(user.getId());
+        return u;
     }
 }
