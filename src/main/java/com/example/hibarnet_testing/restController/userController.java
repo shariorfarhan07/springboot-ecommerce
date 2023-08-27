@@ -4,15 +4,18 @@ package com.example.hibarnet_testing.restController;
 import com.example.hibarnet_testing.domain.User;
 import com.example.hibarnet_testing.dto.userDTO;
 import com.example.hibarnet_testing.service.UserService;
-import org.apache.coyote.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
-public class user {
+public class userController {
     private final UserService userService;
+    Logger log = LoggerFactory.getLogger(userController.class);
 
-    public user(UserService userService) {
+
+    public userController(UserService userService) {
         this.userService = userService;
     }
 

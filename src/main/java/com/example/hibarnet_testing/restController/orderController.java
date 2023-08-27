@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
-public class order {
+public class orderController {
 
     @GetMapping()
     public String creatOrder(){

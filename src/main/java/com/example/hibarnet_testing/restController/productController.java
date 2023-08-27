@@ -16,7 +16,7 @@ import java.util.Optional;
 public class productController {
 
     private final productService productSr;
-    private final Logger log= LoggerFactory.getLogger("ProductController.class");
+    private final Logger log= LoggerFactory.getLogger(productController.class);
 
     public productController(productService productSr) {
         this.productSr = productSr;
@@ -30,8 +30,7 @@ public class productController {
         try {
             product = productSr.productCreate(payload);
         }catch (Exception e){
-            log.equals(e);
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return product;
     }
