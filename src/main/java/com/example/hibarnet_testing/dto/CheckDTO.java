@@ -1,5 +1,5 @@
 package com.example.hibarnet_testing.dto;
 
-public record Check(String test) {
+public record CheckDTO(String test) {
 
 }

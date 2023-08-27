@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/curt")
-public class curt {
+public class curtController {
 
     @GetMapping("/{id}/{qty}")
     public String addtocurt(@PathVariable("id") Long id ){
