@@ -4,6 +4,8 @@ import com.example.hibarnet_testing.domain.Product;
 import com.example.hibarnet_testing.dto.ProductDTO;
 import com.example.hibarnet_testing.mapper.ProductMapper;
 import com.example.hibarnet_testing.repositories.ProductRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -14,6 +16,7 @@ import java.util.Optional;
 
 @Service
 public class productService {
+    private final Logger log= LoggerFactory.getLogger(productService.class);
     private final ProductRepo productDb;
 
     public productService(ProductRepo productDb) {
@@ -25,23 +28,35 @@ public class productService {
     }
 
     public Product productCreate(ProductDTO item) {
+        log.trace("Parameters => "+item.toString());
         Product product= ProductMapper.dtoToEntity(item);
         productDb.save(product);
-        System.out.println("Product saved to db : "+product);
+        log.debug("Product saved to db : "+product);
         return product;
     }
 
     public Product productUpdate(ProductDTO item) {
+        log.trace("items for update => "+item.toString());
         Product product=productDb.findById(item.id()).orElse(null);
-        if (product==null) {System.out.println("product not found");return null;}
+        if (product==null) {
+            log.warn("product not found");
+            return null;
+        }
+        log.trace("items form database => "+product.toString());
         product=ProductMapper.dtoToEntity(item);
         productDb.save(product);
-        System.out.println("product updated : "+product);
+        log.debug("product updated : "+product);
         return product;
-            }
+    }
 
     public List<Product> getAllProduct() {
-        return productDb.findAll();
+        List<Product> products= productDb.findAll();
+        if (products==null){
+            log.warn("No products available");
+        }else{
+            log.trace(products.toString());
+        }
+        return products;
     }
 
 
@@ -53,10 +68,15 @@ public class productService {
     }
 
     public Page<Product> findProductsWithPagination(int offset, int pageSize){
-        return  productDb.findAll(PageRequest.of(offset,pageSize));
+        log.trace("offset : "+offset+" pagesize : "+pageSize);
+        Page<Product> pages =productDb.findAll(PageRequest.of(offset,pageSize));
+        if (pages==null) log.warn("No products available");
+        else log.debug(pages.toString());
+        return pages;
     }
 
     public  Page<Product> findProductsWithPaginationSortedWithField (int offset, int pageSize, String field, String order){
+        log.trace("offset : "+offset+" pagesize : "+pageSize+" field :"+field+" order : "+order);
         if (order.equals("dec")) {
             return productDb.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC, field)));
         }
@@ -66,13 +86,18 @@ public class productService {
 
 
     public Optional<Product> findProductWithId(long id) {
-        return productDb.findById(id);
+        Optional<Product> product= productDb.findById(id);
+        if (product==null){
+            log.warn("product not found id:"+id);
+            return null;
+        }
+        return product;
     }
 
     public String deleteProduct(long id) {
         Optional<Product> p=findProductWithId(id);
-        if (p==null) return "there is no product with id: " + id ;
+        if (p==null) log.error("there is no product with id: " + id);
         p.ifPresent(productDb::delete);
-    return "done" ;
+        return p.toString()+" Has been deleted";
     }
 }
