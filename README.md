@@ -287,7 +287,7 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 - [x] user update 
 - [x] user delete
 - [x] user read
-- [ ] Logger Implementation
+- [x] Logger Implementation
 
 ## product controller 
 - [x] product create
