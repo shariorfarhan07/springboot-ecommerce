@@ -295,7 +295,7 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 - [x] product delete 
 - [x] product update 
 - [x] product view with pagination
-- [ ] Logger Implementation
+- [x] Logger Implementation
 
 ## cart
 - [ ] add to cart
