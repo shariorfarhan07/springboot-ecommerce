@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/curt")
 public class curtController {
 
-    @GetMapping("/{id}/{qty}")
-    public String addtocurt(@PathVariable("id") Long id ){
+    @GetMapping("/{id}")
+    public String addtocurt(@PathVariable("id") Long id,
+                            @RequestParam(value = "add",defaultValue = "0") int add,
+                            @RequestParam(value ="remove",defaultValue = "0") int remove ){
+
+
+
         return "";
     }
-    @DeleteMapping("/{id}")
-    public String removeFromCart(@PathVariable("id") Long id){
-        return "id"+id;
-    }
 
-    @PostMapping("test")
-    public String test(@RequestBody Test test){
-        System.out.println(test);
+
+    @GetMapping("")
+    public String test(){
+        System.out.println("test method");
         return "{'message':'success'}";
     }
 
-    public  String test(){
-        return "test";
-    }
+
 
 }
 
