@@ -1,7 +1,6 @@
 # springboot-ecommerce-backend.
 
-
-monolithic ecommerce application maintaining all the standards.
+Developing a monolithic eCommerce backend application that adheres to the standard principles of REST API would offer a well-structured and reliable way for clients.
 
 N.B: My initial plan is to make a separate backend and a separate frontend with spring boot. Keeping this one as a standard will make other front-end applications.
 
