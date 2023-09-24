@@ -37,6 +37,7 @@ public class productController {
 
     @PutMapping("/{id}")
     public Product productUpdate(@RequestBody ProductDTO payload){
+        log.trace(payload.toString());
         Product product = null;
         try {
             product = productSr.productUpdate(payload);
@@ -63,7 +64,7 @@ public class productController {
             @RequestParam(value = "field",defaultValue = "id") String field
     )
     {
-        System.out.println(pageNumber+"  "+quantity+"  "+order+"  "+field);
+       log.trace(pageNumber+"  "+quantity+"  "+order+"  "+field);
        return productSr.findProductsWithPaginationSortedWithField(pageNumber,quantity,field,order);
 
            }

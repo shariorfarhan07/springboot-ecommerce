@@ -278,7 +278,58 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 
 </details>
 
+## curt controller
 
+#### Listing endpoint for product controller
+
+<details>
+ <summary><code>GET</code> <code><b>/curt</b></code> <code>(gets all the curt in json response)</code></summary>
+
+##### Parameters
+
+> None
+
+##### Responses
+
+> | http code     | content-type                      | response    |
+> |---------------|-------------|---------------------------------------------------------------------|
+> | `200`         | `text/plain;charset=UTF-8`        | JSON object |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X GET -H "Content-Type: application/json" http://localhost:8080/showcurt
+> ```
+
+</details>
+
+
+<details>
+ <summary><code>GET</code> <code><b>/curt/{id}</b></code> <code>(This url adds removes updateds product based) </code></summary>
+
+##### Parameters
+
+> | name |  type     | data type               | description     |
+> |------|-----------|-------------------------|-----------------|
+> | id    |  required | JSON object  | N/A  	                 |
+> | add   | not required |int query parameter  | add that number of element to the cart    |
+> | remove| not required |int query parameter  | removes that number of element to the cart|
+
+
+##### Responses
+
+> | http code     | content-type                      | response    |
+> |---------------|-------------|---------------------------------------------------------------------|
+> | `200`         | `text/plain;charset=UTF-8`        | JSON object with the product in the cart and its quantity|
+
+##### Example cURL
+
+> ```javascript
+>  curl -X GET -H "Content-Type: application/json" http://localhost:8080/cart/{id}?add=1
+>  curl -X GET -H "Content-Type: application/json" http://localhost:8080/cart/{id}?remove=1
+> ```
+
+</details>
 
 
 ## user controller 
@@ -286,7 +337,7 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 - [x] user update 
 - [x] user delete
 - [x] user read
-- [ ] Logger Implementation
+- [x] Logger Implementation
 
 ## product controller 
 - [x] product create
@@ -294,7 +345,7 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 - [x] product delete 
 - [x] product update 
 - [x] product view with pagination
-- [ ] Logger Implementation
+- [x] Logger Implementation
 
 ## cart
 - [ ] add to cart

@@ -28,33 +28,33 @@ public class productService {
     }
 
     public Product productCreate(ProductDTO item) {
-        log.trace("Parameters => "+item.toString());
+        log.info("Parameters => "+item.toString());
         Product product= ProductMapper.dtoToEntity(item);
         productDb.save(product);
-        log.debug("Product saved to db : "+product);
+        log.info("Product saved to db : "+product);
         return product;
     }
 
     public Product productUpdate(ProductDTO item) {
-        log.trace("items for update => "+item.toString());
+        log.info("items for update => "+item.toString());
         Product product=productDb.findById(item.id()).orElse(null);
         if (product==null) {
-            log.warn("product not found");
+            log.info("product not found");
             return null;
         }
-        log.trace("items form database => "+product.toString());
+        log.info("items form database => "+product.toString());
         product=ProductMapper.dtoToEntity(item);
         productDb.save(product);
-        log.debug("product updated : "+product);
+        log.info("product updated : "+product);
         return product;
     }
 
     public List<Product> getAllProduct() {
         List<Product> products= productDb.findAll();
         if (products==null){
-            log.warn("No products available");
+            log.info("No products available");
         }else{
-            log.trace(products.toString());
+            log.info(products.toString());
         }
         return products;
     }
@@ -68,15 +68,15 @@ public class productService {
     }
 
     public Page<Product> findProductsWithPagination(int offset, int pageSize){
-        log.trace("offset : "+offset+" pagesize : "+pageSize);
+        log.info("offset : "+offset+" pagesize : "+pageSize);
         Page<Product> pages =productDb.findAll(PageRequest.of(offset,pageSize));
-        if (pages==null) log.warn("No products available");
-        else log.debug(pages.toString());
+        if (pages==null) log.info("No products available");
+        else log.info(pages.toString());
         return pages;
     }
 
     public  Page<Product> findProductsWithPaginationSortedWithField (int offset, int pageSize, String field, String order){
-        log.trace("offset : "+offset+" pagesize : "+pageSize+" field :"+field+" order : "+order);
+        log.info("offset : "+offset+" pagesize : "+pageSize+" field :"+field+" order : "+order);
         if (order.equals("dec")) {
             return productDb.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC, field)));
         }
@@ -88,7 +88,7 @@ public class productService {
     public Optional<Product> findProductWithId(long id) {
         Optional<Product> product= productDb.findById(id);
         if (product==null){
-            log.warn("product not found id:"+id);
+            log.info("product not found id:"+id);
             return null;
         }
         return product;
@@ -96,7 +96,7 @@ public class productService {
 
     public String deleteProduct(long id) {
         Optional<Product> p=findProductWithId(id);
-        if (p==null) log.error("there is no product with id: " + id);
+        if (p==null) log.info("there is no product with id: " + id);
         p.ifPresent(productDb::delete);
         return p.toString()+" Has been deleted";
     }
