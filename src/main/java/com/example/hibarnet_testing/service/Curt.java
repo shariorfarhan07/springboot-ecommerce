@@ -73,7 +73,7 @@ public class Curt {
             }
             double price=newQty*product.getPrice();
             this.total=this.total+price;
-            product.setQuantity(product.getQuantity()+add);
+            product.setQuantity(product.getQuantity()+remove);
             product.setPrice(price);
 
 
