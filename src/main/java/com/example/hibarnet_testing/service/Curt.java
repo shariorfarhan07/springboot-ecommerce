@@ -59,13 +59,14 @@ public class Curt {
         return product.getProduct();
     }
 
-    public Product removeFromCurt(long product_id, Long add) {
-        CurtEntity product;
+    public Product removeFromCurt(long product_id, Long remove) {
+        CurtEntity product = null;
         int p_qty = 0;
         if (this.productmap.containsKey(product_id)) {
             product = this.productmap.get(product_id);
             this.total=this.total-product.getPrice();
-            Long newQty=product.getQuantity()-add;
+
+            Long newQty=product.getQuantity()-remove;
             if (newQty<0) {
                 log.info("Product quantity can't be negetive");
                 return null;
@@ -77,22 +78,12 @@ public class Curt {
 
 
         }else{
-            Product productdata = productDb.findById(product_id).orElse(null);
-            if (productdata == null){
-                log.info("this product is no available");
-                return null;
-            }
-            product=CurtEntity.builder()
-                    .product(productdata)
-                    .price(productdata.getPrice()*add)
-                    .quantity(add).build();
-
-            productmap.put(productdata.getId(),product);
+            log.info("This product was never added to curt. Please add to curt first");
         }
-        log.info("this product added successfully");
+        log.info("this product decreased successfully");
 
 
-        return product.getProduct();
+        return (product==null)?null:product.getProduct();
     }
 
 
