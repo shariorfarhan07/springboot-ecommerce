@@ -1,9 +1,8 @@
 package com.example.hibarnet_testing.service;
 
 import com.example.hibarnet_testing.domain.Product;
-import com.example.hibarnet_testing.domain.User;
 import com.example.hibarnet_testing.repositories.ProductRepo;
-import com.example.hibarnet_testing.repositories.UserRepo;
+import com.example.hibarnet_testing.dto.CurtEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,39 +11,92 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Curt {
-    private Map<Long,Integer> product;
-    private double Total;
+    private Map<Long ,CurtEntity> productmap;
+    private double total;
     private final Logger log= LoggerFactory.getLogger(Curt.class);
     @Autowired
     private ProductRepo productDb;
 
     public Curt(Curt c){
         if (c!=null){
-            this.product=c.product;
-            this.Total=c.Total;
+            this.productmap =c.productmap;
+            this.total=c.total;
         }else {
-            this.product=new HashMap<>();
-            this.Total=0;
+            this.productmap =new HashMap<>();
+            this.total=0;
         }
     }
 
 
-    private Product addOrRemove(long product_id, int quantity) {
-        Product product = productDb.findById(product_id).orElse(null);
-        if (product == null){  log.info("this product is no available"); return product;}
+    public Product addtoCurt(long product_id, Long add) {
+        CurtEntity product;
         int p_qty = 0;
-        if (this.product.containsKey(product_id)) {
-            p_qty = this.product.get(product_id);
+        if (this.productmap.containsKey(product_id)) {
+            product = this.productmap.get(product_id);
+            this.total=this.total-product.getPrice();
+            double price=(product.getQuantity()+add)*product.getPrice();
+            this.total=this.total+price;
+            product.setQuantity(product.getQuantity()+add);
+            product.setPrice(price);
+
+
+        }else{
+            Product productdata = productDb.findById(product_id).orElse(null);
+            if (productdata == null){
+                log.info("this product is no available");
+                return null;
+            }
+            product=CurtEntity.builder()
+                    .product(productdata)
+                    .price(productdata.getPrice()*add)
+                    .quantity(add).build();
+
+            productmap.put(productdata.getId(),product);
         }
-        if (p_qty+quantity<0) {
-            log.info("this product is no available");
-        }
-
-        double price=product.getPrice()*quantity;
-        this.Total+=price;
+        log.info("this product added successfully");
 
 
-
-        return null;
+        return product.getProduct();
     }
+
+    public Product removeFromCurt(long product_id, Long add) {
+        CurtEntity product;
+        int p_qty = 0;
+        if (this.productmap.containsKey(product_id)) {
+            product = this.productmap.get(product_id);
+            this.total=this.total-product.getPrice();
+            Long newQty=product.getQuantity()-add;
+            if (newQty<0) {
+                log.info("Product quantity can't be negetive");
+                return null;
+            }
+            double price=newQty*product.getPrice();
+            this.total=this.total+price;
+            product.setQuantity(product.getQuantity()+add);
+            product.setPrice(price);
+
+
+        }else{
+            Product productdata = productDb.findById(product_id).orElse(null);
+            if (productdata == null){
+                log.info("this product is no available");
+                return null;
+            }
+            product=CurtEntity.builder()
+                    .product(productdata)
+                    .price(productdata.getPrice()*add)
+                    .quantity(add).build();
+
+            productmap.put(productdata.getId(),product);
+        }
+        log.info("this product added successfully");
+
+
+        return product.getProduct();
+    }
+
+
+
+
+
 }
