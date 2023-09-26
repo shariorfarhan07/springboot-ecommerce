@@ -349,10 +349,10 @@ N.B: My initial plan is to make a separate backend and a separate frontend with 
 - [x] Logger Implementation
 
 ## cart
-- [ ] add to cart
-- [ ] remove from cart
-- [ ] view cart
-- [ ] Logger Implementation
+- [x] add to cart
+- [x] remove from cart
+- [x] view cart
+- [x] Logger Implementation
 ## Order  
 - [ ] see order 
 - [ ] place order
